@@ -1,0 +1,88 @@
+ {% extends "AcmeLoginBundle::datatable.html.twig" %}
+
+ {% block title %} {{app.session.get('login')}} | {{title}} | {% endblock %} 
+
+ {%block content%} 
+
+<style type="text/css" title="currentStyle">
+	@import "http://192.168.17.77/DataTables/media/css/demo_page.css";
+	@import "http://192.168.17.77/DataTables/media/css/demo_table.css";
+</style>
+		
+<script src="http://192.168.17.77/relacion_usuarios/assets/bootstrap/js/jquery.js"></script>
+			
+<script src="http://192.168.17.77/DataTables/media/js/jquery.dataTables.js"></script>
+	
+	
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#yo').dataTable();
+	} );
+</script>
+
+<h1>Logins list</h1>
+
+<ul>
+    <li>
+        <a href="{{ path('accesos_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="yo" width="100%">
+    <thead>
+        <tr class="odd gradeX">
+            <th>Id</th>
+            <th>Login</th>
+            <th>Descripcion</th>
+            <th>Act</th>
+            <th>Adm</th>
+            <th>Loock</th>
+            <th>Iphost</th>
+            <th>Theme</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr class="odd gradeA">
+            <td><a href="{{ path('accesos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.login }}</td>
+            <td>{{ entity.descripcion }}</td>
+            <td>{{ entity.act }}</td>
+            <td>{{ entity.adm }}</td>
+            <td>{{ entity.loock }}</td>
+            <td>{{ entity.iphost }}</td>
+            <td>{{ entity.theme }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('accesos_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('accesos_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+		<tr class="odd group">
+			<th>Id</th>
+            <th>Login</th>
+            <th>Descripcion</th>
+            <th>Act</th>
+            <th>Adm</th>
+            <th>Loock</th>
+            <th>Iphost</th>
+            <th>Theme</th>
+            <th>Actions</th>
+		</tr>
+	</tfoot>
+</table>
+
+
+
+{%endblock%}

@@ -1,0 +1,10 @@
+{% extends 'AcmeLoginBundle::datatable.html.twig' %}
+
+{% block title %}{{app.session.get('login')}} | {{title}} | {% endblock %}
+
+{% block content %}
+
+<div class="alert alert-info"><h1>Bienvenido {{ app.session.get('login') }}</h1></div>
+
+
+{% endblock %}

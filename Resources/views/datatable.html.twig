@@ -1,0 +1,211 @@
+<html>
+	<meta charset="utf-8">
+	{% block meta %}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	{% endblock %}
+	
+	{% block addmeta %}
+	{% endblock %}    
+	
+	
+	
+	<head>
+		<title>{% block title %}{% endblock %} Bootstrap for datatables</title>
+		
+		{% block css %}
+		<!-- Le styles -->
+    <link href="http://192.168.17.77/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+    <link href="http://192.168.17.77/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    	{% endblock %}
+    
+    	{% block addcss %}
+		{% endblock %}   
+	
+		{% block js %}
+		<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+     <script src="http://192.168.17.77/bootstrap/js/jquery.js"></script>
+    <script src="http://192.168.17.77/bootstrap/js/bootstrap-transition.js"></script>
+    <script src="http://192.168.17.77/bootstrap/js/bootstrap-alert.js"></script>
+    <script src="http://192.168.17.77/bootstrap/js/bootstrap-modal.js"></script>
+    <script src="http://192.168.17.77/bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="http://192.168.17.77/bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="http://192.168.17.77/bootstrap/js/bootstrap-tab.js"></script>
+    <script src="http://192.168.17.77/bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="http://192.168.17.77/bootstrap/js/bootstrap-popover.js"></script>
+    <script src="http://192.168.17.77/bootstrap/js/bootstrap-button.js"></script>
+    <script src="http://192.168.17.77/bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="http://192.168.17.77/bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="http://192.168.17.77/bootstrap/js/bootstrap-typeahead.js"></script>
+		{% endblock %}
+
+		{% block addjs %}
+		{% endblock %}   
+		
+		<!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://192.168.17.77/relacion_usuarios/assets/relacion_usuarios/images/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://192.168.17.77/bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://192.168.17.77/bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://192.168.17.77/bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="http://192.168.17.77/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+	</head>
+	
+	<body>
+		
+		
+		
+		<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="{{ path('myloginok') }}">Administración APP</a>
+          <div class="btn-group pull-right">
+             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+              	
+            	{% if app.session.get('login') %}	
+     			 	<i class="icon-user"></i> {{ app.session.get('login') }}
+   		  		{% else %}
+   		  			<i class="icon-user"></i> Anonimo
+   	     		{% endif %}
+     	
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+            	
+              {% if app.session.get('login') %}
+              <li><a href="#">Profile</a></li>
+              {% endif %}
+              
+              <li class="divider"></li>
+              
+              {% if app.session.get('login') %}
+              <li><a href="{{ path('mygoout') }}">Sign Out</a></li>
+              {% endif %}
+              
+            </ul>
+           </div>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="{{ path('myloginok') }}">Inicio</a></li>
+              <li><a href="{{ path('accesos') }}">Accesos</a></li>
+              <li><a href="{{ path('ssh') }}">Ejecutar Comamdo</a></li>
+              <li><a href="{{ path('fichero') }}">Modificar ficheros</a></li>
+             </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+		
+		
+		
+		
+	<div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Codificadores:</li>
+              <li class="active"><a href='{{ path('departamentos') }}'><span>Departamentos</span></a></li>
+     		  <!--<li><a href='/relacion_usuarios/index.php/relacion_usuarios/main/themes'><span>Themes</span></a></li>-->
+			  <li><a href='{{ path('cargos') }}'><span>Cargos</span></a></li>
+			  <li><a href='{{ path('subredes') }}'><span>Subredes</span></a></li>
+			  <li><a href='{{ path('redes') }}'><span>Redes</span></a></li>
+              <li class="nav-header">Relacion Usuarios IP</li>
+              <li><a href='{{ path('usuarios') }}'><span>Usuarios</span></a></li>
+			  <li><a href='{{ path('iprelacion') }}'><span>Relacion de ips</span></a></li>
+			  <!--<li><a href='/relacion_usuarios/index.php/relacion_usuarios/main/todo'><span>Reporte Completo</span></a></li>-->
+              <!--<li class="nav-header">Otros</li>
+              <li><a href='/relacion_usuarios/index.php/relacion_usuarios/main/ftpmanage'><span>Administrar usuarios del FTP</span></a></li>
+			  <li><a href='/relacion_usuarios/index.php/relacion_usuarios/main/bashcmd'><span>Ejecutar comando en servidor</span></a></li>
+			  <li><a href='/relacion_usuarios/index.php/relacion_usuarios/main/sshsend'><span>Mandar fichero a servidor por ssh</span></a></li>-->
+            </ul>
+          </div><!--/.well -->
+          
+          
+          
+{% if app.session.get('login') == null %}  
+	
+	<script src="http://192.168.17.77/misasset/js.functions/jquery.autotab-1.1b.js" type="text/javascript" charset="utf-8"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+     $('#u1').autotab({  format: 'login' });
+	});
+	</script>
+	
+	<div align="right" >
+	<form class="well form-inline" method='post' action='{{ path("mycheck") }}'>
+    <input name="_username" type="text" class="input-small" placeholder="User" id="u1">
+    <input name="_password" type="password" class="input-small" placeholder="Password" id="p1">
+    <!--<label class="checkbox">
+    <input type="checkbox"> Remember me
+    </label>-->
+    <button type="submit" class="btn">Sign in</button>
+    </form>
+	</div> 
+	 
+{% endif %}  
+          
+  
+          
+          
+        </div><!--/span-->
+        <div class="span9">
+        	
+          {% if app.session.get('login') == null %}
+        	
+          <div class="hero-unit">
+            <h1>Hello, Administradores de red!</h1>
+            <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+          </div>
+          
+          {% endif %}
+          
+          
+{% block mensajes %}	
+	{% if app.session.flash('error') %}
+		<div class="alert alert-error">{{ app.session.flash('error') }}</div>
+	{% endif %}
+	{% if app.session.flash('salida') %}
+	    <div class="alert alert-success">{{ app.session.flash('salida') }}</div>
+	{% endif %}
+	{% if app.session.flash('info') %}
+	    <div class="alert alert-info">{{ app.session.flash('info') }}</div>
+	{% endif %}
+{% endblock %}	
+
+          
+          {% block content %}
+          {% endblock %}
+          
+        </div><!--/span-->
+      </div><!--/row-->
+
+    
+
+      <footer>
+        <div id="pie" align="center"><span class="label">Desarrollado por: Departamento TI Vicepresidencia la Habana. Proyecto realizado con Software Libre</span></div>
+      </footer>
+
+    </div><!--/.fluid-container-->
+          
+	</body>
+	
+</html>

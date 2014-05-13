@@ -1,0 +1,14 @@
+{% extends 'AcmeLoginBundle::datatable.html.twig' %} 
+       
+{% block title %} {{ app.session.get('login') }} | {% if title %} {{ title }} {%endif%} | {% endblock %}
+
+{% block content %}
+
+<div class="alert alert-block">
+    <a class="close" data-dismiss="alert" href="#">×</a>
+    <h4 class="alert-heading">Warning!</h4>
+    <h1>Usted no tiene acceso en este sitio!</h1>
+    <!--<p><a class="b" href="{{ path('mylogin') }}"> Autenticarse!</a></p>-->
+</div>
+
+{% endblock %}

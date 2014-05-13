@@ -1,0 +1,78 @@
+{% extends "AcmeLoginBundle::datatable.html.twig" %}
+
+{% block title %} {{app.session.get('login')}} | {{title}} | {% endblock %} 
+
+{%block content%} 
+
+<style type="text/css" title="currentStyle">
+	@import "http://192.168.17.77/DataTables/media/css/demo_page.css";
+	@import "http://192.168.17.77/DataTables/media/css/demo_table.css";
+</style>
+<script src="http://192.168.17.77/relacion_usuarios/assets/bootstrap/js/jquery.js"></script>
+<script src="http://192.168.17.77/DataTables/media/js/jquery.dataTables.js"></script>
+	
+<script type="text/javascript">
+			$(document).ready(function() {
+				$('#yo').dataTable();
+			} );
+</script>
+
+<h1>Logins</h1>
+
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="yo" width="100%">
+    <tbody>
+        <tr class="odd gradeC">
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr class="odd gradeC">
+            <th>Login</th>
+            <td>{{ entity.login }}</td>
+        </tr>
+        <tr class="odd gradeC">
+            <th>Descripcion</th>
+            <td>{{ entity.descripcion }}</td>
+        </tr>
+        <tr class="odd gradeC">
+            <th>Act</th>
+            <td>{{ entity.act }}</td>
+        </tr>
+        <tr class="odd gradeC">
+            <th>Adm</th>
+            <td>{{ entity.adm }}</td>
+        </tr>
+        <tr class="odd gradeC">
+            <th>Loock</th>
+            <td>{{ entity.loock }}</td>
+        </tr>
+        <tr class="odd gradeC">
+            <th>Iphost</th>
+            <td>{{ entity.iphost }}</td>
+        </tr>
+        <tr class="odd gradeC">
+            <th>Theme</th>
+            <td>{{ entity.theme }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('accesos') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('accesos_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('accesos_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+
+{%endblock%}

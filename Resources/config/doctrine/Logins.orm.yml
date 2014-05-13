@@ -1,0 +1,42 @@
+Acme\Bundle\LoginBundle\Entity\Logins:
+  type: entity
+  table: logins
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: SEQUENCE
+    login:
+      type: string
+      length: 20
+      fixed: false
+      nullable: false
+    descripcion:
+      type: string
+      length: 50
+      fixed: false
+      nullable: true
+    act:
+      type: boolean
+      nullable: false
+    adm:
+      type: boolean
+      nullable: false
+    loock:
+      type: integer
+      unsigned: false
+      nullable: false
+    iphost:
+      type: string
+      length: 15
+      fixed: false
+      nullable: false
+    theme:
+      type: string
+      length: 30
+      fixed: false
+      nullable: true
+  lifecycleCallbacks: {  }

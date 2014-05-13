@@ -1,0 +1,22 @@
+AcmeLoginBundle_accesos:
+    resource: "@AcmeLoginBundle/Resources/config/routing/logins.php"
+    prefix:   /accesos
+
+#//////////////////////////////////////////////////////////////// 
+#rutas de logeo al sistema
+mylogin:
+    pattern:      /login
+    defaults:     { _controller: AcmeLoginBundle:Autentication:index }
+
+mycheck:
+    pattern:      /login_check
+    defaults:     { _controller: AcmeLoginBundle:Autentication:mycheck }
+
+myloginok:
+    pattern:      /login_ok
+    defaults:     { _controller: AcmeLoginBundle:Autentication:loginok }
+
+mygoout:
+    pattern:      /logout
+    defaults:     { _controller: AcmeLoginBundle:Autentication:mygoout }
+#//////////////////////////////////////////////////////////////////////
